@@ -44,10 +44,19 @@ def find_unmatched_rows(data1, data2):
     return unmatched_rows
 
 
-def compare(file1, file2):
-  data1, data2 = load_files(file1, file2)
-  if data1 is None or data2 is None:
-    return
-  unmatched_rows = find_unmatched_rows(data1, data2)
-  print(f"Unmatched rows: {unmatched_rows}")
+# def compare(file1, file2):
+#   data1, data2 = load_files(file1, file2)
+#   if data1 is None or data2 is None:
+#     return
+#   unmatched_rows = find_unmatched_rows(data1, data2)
+#   print(f"Unmatched rows: {unmatched_rows}")
   
+def compare(file1, file2):
+    data1, data2 = load_files(file1, file2)
+    if data1 is None or data2 is None:
+        return [], []
+
+    unmatched_rows_file1 = find_unmatched_rows(data1, data2)
+    unmatched_rows_file2 = find_unmatched_rows(data2, data1)
+
+    return unmatched_rows_file1, unmatched_rows_file2
